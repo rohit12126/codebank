@@ -1,0 +1,12 @@
+/**
+* This is for support page only.
+**/
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+.dataTables_filter{
+    text-align: left !important;
+}

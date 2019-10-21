@@ -1,0 +1,243 @@
+
+.card {
+    margin-bottom: 1.5rem;
+}
+.text-white {
+    color: #fff !important;
+}
+.bg-primary {
+    background-color: #20a8d8 !important;
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c8ced3;
+        border-top-color: rgb(200, 206, 211);
+        border-right-color: rgb(200, 206, 211);
+        border-bottom-color: rgb(200, 206, 211);
+        border-left-color: rgb(200, 206, 211);
+    border-radius: .25rem;
+}
+.pb-0, .py-0 {
+    padding-bottom: 0 !important;
+}
+.text-white {
+    color: #fff !important;
+}
+.card {
+    word-wrap: break-word;
+}
+.text-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.text-white {
+    color: #fff !important;
+}
+.card {
+    word-wrap: break-word;
+}
+.animated .card-body{
+    background: transparent;
+}
+
+.brand-card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c8ced3;
+    border-radius: .25rem;
+}
+.bg-facebook {
+    background-color: #3b5998 !important;
+}
+
+
+.brand-card-body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: .75rem 0;
+    text-align: center;
+    justify-content: space-around;
+}
+.text-muted {
+    color: #73818f !important;
+}
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+small, .small {
+    font-size: 80%;
+    font-weight: 400;
+}
+.brand-card-body{
+    position: relative;
+}
+.brand-card-body:after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 1px;
+    height: 30px;
+    background: #ccc;
+
+}
+.progress-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-bottom: 1rem;
+}
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem !important;
+}
+.progress-group-prepend {
+    -ms-flex: 0 0 100px;
+    flex: 0 0 100px;
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+.progress-group-text {
+    font-size: .765625rem;
+    color: #73818f;
+}
+.progress-group-bars {
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+.progress-group-bars .progress:not(:last-child) {
+    margin-bottom: 2px;
+}
+.progress-xs {
+    height: 4px;
+}
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    /*height: 1rem;*/
+    overflow: hidden;
+    font-size: .65625rem;
+    background-color: #f0f3f5;
+    border-radius: .25rem;
+}
+.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-dark {
+    color: #fff;
+}
+.bg-info {
+    background-color: #63c2de !important;
+}
+.progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #20a8d8;
+    transition: width .6s ease;
+}
+.bg-danger {
+    background-color: #f86c6b !important;
+}
+.progress-group-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    margin-bottom: .25rem;
+}
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
+}
+.progress-group-header + .progress-group-bars {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+}
+.progress-group-icon {
+    margin: 0 1rem 0 .25rem;
+    font-size: 1.09375rem;
+}
+.brand-card .brand-card-header{
+    height: 70px;
+}
+.bg-google-plus {
+    background-color: #d34836 !important;
+}
+.bg-linkedin {
+    background-color: #4875b4 !important;
+}
+.bg-twitter {
+    background-color: #00aced !important;
+}
+.brand-card-header{
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    padding: 17px;
+}
+.card-body  a{
+    color: #000 !important;
+}
+.card-body {
+    padding: 2rem;
+}
+.dashboard .card-header {
+border-bottom:1px solid #ccc;
+}
+.card, .main-bg{
+    background: #fff ;
+}
+.card-body{
+    box-shadow: none;
+    padding:10px;
+}
+.animated .card-body{
+    padding:10px;
+}
+.content-body.card-margin .card{
+    margin:10px;
+}
+.card-icon-wrap{
+    position: absolute;
+    right: 0;
+    top: 30px;
+    right: 20px;
+}
+.card-icon-wrap svg{
+    font-size: 40px; 
+    opacity: 0.5;   
+}
+.bg-warning {
+    background-color: #eccb6a !important;
+}
+.no-data-img-wrap {
+    padding: 88px;
+}

@@ -1,0 +1,16 @@
+:root {--main-sidebar-bg-color : #4f3f71;
+			  --top-header-bg-color : #f9efef;
+			  --btn-userbox-bg-color : #a430dc;
+			  --nav-active-bg-color : #bfdaf1;
+			  --nav-active-shadow-color :#fff;
+			  --nav-hover-bg-color : #b8e3f5;
+			  --card-header-bg-color : #c09ee7;
+			  --card-footer-bg-color : #fff;
+			  --btn-primary-bg-color : #1019c4;
+			  --btn-default-bg-color : #646464;
+			  --btn-secondary-bg-color : #6c757d;
+			  --btn-danger-bg-color : #c9356a;
+			  --btn-success-bg-color : #14a85e;
+			  --body-link-color : #3b3838;
+			  --body-link-hover-color : #2851a3;
+			}

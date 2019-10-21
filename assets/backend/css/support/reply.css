@@ -1,0 +1,17 @@
+/**
+* This is for support reply section only.
+**/
+.comment {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 100px !important;
+}
+#supportReplyModal .chat-section #custom-scrollbar{
+    padding: 0 0px 20px 10px;
+}
+.reciver-time {
+    text-align: right;
+}
+.sender-time {
+    text-align: left;
+}

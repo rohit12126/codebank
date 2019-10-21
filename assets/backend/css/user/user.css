@@ -1,0 +1,24 @@
+/**
+* This is for user page only.
+**/
+#importFrm {
+    margin-bottom: 20px;
+}
+#importStudentModal{
+    padding-right: 0 !important;
+}
+#remove-file svg{
+    color: red;
+}
+.all-select-box{
+    width: 61px !important;
+}
+.viewLoginHistory{
+    font-size: 15px;
+}
+.swal-modal .swal-text{
+    text-align: center;
+}
+#example_wrapper{
+    min-height: 450px;
+}

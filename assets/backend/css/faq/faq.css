@@ -1,0 +1,26 @@
+/**
+* This is for faq page only.
+**/
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+table td table tr{
+    background: none !important;
+}
+.uneditable-input{
+    width: 472px;
+    height: 33px !important;
+    border-radius: 0;
+}
+.btn.btn-default.btn-file{
+    margin-right: 2px;
+}
+.fileupload-preview{
+    padding-left: 25px !important;
+}
+table.table-bordered.dataTable tbody td {
+    border-top: none;
+}
