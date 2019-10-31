@@ -16,34 +16,9 @@
         <link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/style.css" />
         <!-- Theme Custom CSS -->
         <link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/custom.css">
-        <style type="text/css">
-            .copyright{
-                color: #000 !important;
-            }
-            .body-sign .card-sign .card-title-sign .title {
-                background-color: #0088CC;
-            }
-            .body-sign .card-sign .card-body {
-                border-top-color: #0088CC;
-            }
-            .form-control-lg{
-                font-size: 14px;
-            }
-            .logo{
-                padding-top: 10px;
-                display: block;
-                width: 100%;
-                text-align: center;
-                background: #fff;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                padding-bottom: 10px;
-            }
-            html{
-                overflow-x: hidden !important;
-                overflow-y: auto !important;
-            }
-        </style>
+        <!-- custom css for login page -->
+        <link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/login/login.css" />
+        <!--  End -->
     </head>
     <body style="background: #ecedf0;">
         <!-- start: page -->

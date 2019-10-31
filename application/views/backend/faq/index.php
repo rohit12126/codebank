@@ -29,12 +29,12 @@
             <table id="example" class="<?php echo TABLE_CLASS; ?>">
                 <thead>
                     <tr>
-                        <th style="width: 1%;">#</th>
-                        <th><?= $this->lang->line('table_heading_question')?></th>
-                        <th><?= $this->lang->line('table_heading_answer')?></th>
-                        <th style="width: 70px;"><?= $this->lang->line('table_heading_orderby')?></th>
-                        <th style="width: 70px;"><?= $this->lang->line('table_heading_status')?></th>
-                        <th style="width: 50px;"><?= $this->lang->line('table_heading_action')?></th>
+                        <th style="width:1%;">#</th>
+                        <th style="width:20%;"><?= $this->lang->line('table_heading_question')?></th>
+                        <th style="width:50%;"><?= $this->lang->line('table_heading_answer')?></th>
+                        <th style="width:10%;"><?= $this->lang->line('table_heading_orderby')?></th>
+                        <th style="width:4%;"><?= $this->lang->line('table_heading_status')?></th>
+                        <th style="width:5%;"><?= $this->lang->line('table_heading_action')?></th>
                     </tr>
                 </thead>
             </table>
@@ -67,7 +67,7 @@
                     <div class="col-sm-12">
                         <div class="row form-group">
                             <label for="inputPassword4"><?= $this->lang->line('label_answer')?><small class="required">*</small></label>
-                            <textarea type="text" class="form-control tinymce_edittor" placeholder="Note" name="answer" placeholder="Type answer here..." data-parsley-required-message="Answer field is required."></textarea>
+                            <textarea type="text" class="form-control tinymce_edittor" placeholder="Note" name="answer" placeholder="Type answer here..." data-parsley-required-message="<?= $this->lang->line('error_faq_answer_required')?>"></textarea>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -112,7 +112,7 @@
                     <div class="col-sm-12">
                         <div class="row form-group">
                             <label for="inputPassword4"><?= $this->lang->line('label_answer')?><small class="required">*</small></label>
-                            <textarea type="text" class="form-control tinymce_edittor" data-parsley-required-message="Answer field is required." name="answer"></textarea> 
+                            <textarea type="text" class="form-control tinymce_edittor" data-parsley-required-message="<?= $this->lang->line('error_faq_answer_required')?>" name="answer"></textarea> 
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -127,7 +127,7 @@
                     <div class="row">
                         <div class="col-md-12 text-right">
                             <button class="btn btn-primary modal-confirm"><?= $this->lang->line('button_update')?></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><?= $this->lang->line('button_close')?></button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?= $this->lang->line('faq_button_close')?></button>
                         </div>
                     </div>
                 </footer>

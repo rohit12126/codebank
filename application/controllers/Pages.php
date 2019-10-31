@@ -150,12 +150,7 @@ class Pages extends CI_Controller {
     /* Submit contact us form*/
     public function contact_us(){ 
         if($this->input->post()) {
-            $this->form_validation->set_rules('name','name','trim|required|max_length[50]');
-            $this->form_validation->set_rules('email','email','trim|required|valid_email|max_length[100]');
-            $this->form_validation->set_rules('subject','subject','required');
-            $this->form_validation->set_rules('contact_number','contact number','is_natural|max_length[15]');
-            $this->form_validation->set_rules('message','Message','trim|required|max_length[250]');
-            if($this->form_validation->run() === TRUE){
+            if($this->form_validation->run('contact_us') === TRUE){
                 $data =[
                         'name'=> $this->input->post('name'),
                         'email'=> $this->input->post('email'),

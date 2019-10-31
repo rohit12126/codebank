@@ -29,7 +29,7 @@
                                             <p>We're sorry, something went wrong with your payment.</p>
                                             <div class="user-sent-info">
                                                 <div class="btn-contishop">
-                                                    <a href="<?php echo base_url("subscription"); ?>" class="btn  contact-us-button">
+                                                    <a href="<?php echo base_url("paypal"); ?>" class="btn  contact-us-button">
                                                         Try again
                                                     </a>
                                                 </div>

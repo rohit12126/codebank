@@ -47,14 +47,14 @@
             <div class="full-form-group">
                 <input type="hidden" name="support_id" value="<?= $support->support_id?>">
                 <label for="comment"><?=$this->lang->line('label_support_comment')?><small class="required">*</small></label>
-                <textarea <?= $support->status==0?'disabled':''?> class="form-control comment" id="comment" placeholder="Type here..." name="reply" required="" data-parsley-required-message="Comment is required."></textarea>
+                <textarea <?= $support->status==0?'disabled':''?> class="form-control comment" id="comment" placeholder="Type here..." name="reply" required="" data-parsley-required-message="<?=$this->lang->line('error_message_comment_required')?>"></textarea>
             </div>
         </div>
         <footer class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-right">
                     <button class="btn btn-primary modal-confirm" <?= $support->status==0?'disabled':''?>><?=$this->lang->line('button_reply')?></button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?=$this->lang->line('button_close') ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?=$this->lang->line('support_button_close') ?></button>
                 </div>
             </div>
         </footer>

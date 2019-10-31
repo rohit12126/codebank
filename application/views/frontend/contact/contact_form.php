@@ -25,7 +25,7 @@
                                                     <label for="name" class ="control-label">Name<span class="red-star">*</span></label>
                                                 </div>
                                                 <div class="input-wrap name-input img-right-border">
-                                                    <input type="text" id="name" name="name" class="form-control" id="name" placeholder="Ex: John Doe" value="" required="" data-parsley-required-message="Student name is required." maxlength="50">
+                                                    <input type="text" id="name" name="name" class="form-control" id="name" placeholder="Ex: John Doe" value="" required="" data-parsley-required-message="name is required." maxlength="50">
                                                     <?= file_get_contents_curl("assets/frontend/img/user-login.svg"); ?>
                                                 </div>
                                             </div>

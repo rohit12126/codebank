@@ -1,0 +1,15 @@
+table td img{
+    max-height: 100px;
+    max-width: 100px;
+}
+span.grade-time-show2.pull-right {
+    padding-left: 20px;
+}
+.error {
+    color: red;
+}
+.control-label .error {
+    font-size: 14px;
+    margin: 0px;
+    font-weight: bold;
+}

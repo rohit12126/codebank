@@ -89,12 +89,7 @@ class Template extends CI_Controller {
 	}
 	// Edit email template.
 	public function edit() {
-		$this->form_validation->set_rules('id','Template ID','required');
-        $this->form_validation->set_rules('template_name','Template Title','trim|required|max_length[50]');
-        $this->form_validation->set_rules('template_subject','Template Subject','trim|required|max_length[50]');
-        $this->form_validation->set_rules('template_layout','Template Layout','trim|required');
-		$this->form_validation->set_rules('template_body','Email Template Body','required');
-        if($this->form_validation->run() === TRUE){
+        if($this->form_validation->run('email_template_edit') === TRUE){
         	$email_template_id = $this->input->post('id');
         	$data['template_subject'] = $this->input->post('template_name');
         	$data['template_layout'] = $this->input->post('template_layout');

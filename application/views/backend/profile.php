@@ -75,70 +75,10 @@
 		</section>
 	</div>
 </div>
-<script type="text/javascript">
-	$( "#profileForm" ).submit(function( event ) {
-		if($(this).parsley().isValid()){
-			var POSTURL = $(this).attr('action');
-		  	$.ajax({
-				type: 'POST',
-				url: POSTURL,
-				data: new FormData($(this)[0]),
-				contentType: false,
-				cache: false,
-				processData:false,
-				dataType: "json",
-				beforeSend: function () {
-				   $('.loader-wrap').removeClass('dn');
-				},
-				complete: function () {
-				   $('.loader-wrap').addClass('dn');
-				},
-				success: function (output) {
-					if(output.status == 'success')
-						$(".profile-info .name").html($("#user_name").val());
-				    toasterMessage(output.status, output.message);
-				},
-				error: function (error) {
-				   $('.loader-wrap').addClass('dn');
-				}
-			});
-		  	event.preventDefault();
-	  	}
-	});
-	$( "#passwordForm" ).submit(function( event ) {
-		if($(this).parsley().isValid()){
-			var POSTURL = $(this).attr('action');
-		  	$.ajax({
-				type: 'POST',
-				url: POSTURL,
-				data: new FormData($(this)[0]),
-				contentType: false,
-				cache: false,
-				processData:false,
-				dataType: "json",
-				beforeSend: function () {
-				   $('.loader-wrap').removeClass('dn');
-				},
-				complete: function () {
-				   $('.loader-wrap').addClass('dn');
-				},
-				success: function (output) {
-				    toasterMessage(output.status, output.message);
-				},
-				error: function (error) {
-				   $('.loader-wrap').addClass('dn');
-				}
-			});
-		  	event.preventDefault();
-	  	}
-	});
-</script>
-<style>
-	form{
-		padding-top: 20px;
-	}
-	.parsley-errors-list {
-	    position: absolute;
-	}
 
-</style>
+<!-- custom css for profile page -->
+<link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/profile/profile.css" />
+<!--  End -->
+<!-- profile js -->
+<script src="<?php echo BACKEND_THEME_URL;?>js/profile/profile.js"></script>
+<!-- End profile js -->

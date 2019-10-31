@@ -11,17 +11,7 @@ class Theme_settings extends CI_Controller{
 	/*customize theme settings*/
 	public function index(){
 		if($this->input->post()) {
-			$this->form_validation->set_rules('sidebar_color','sidebar color','required');
-	        $this->form_validation->set_rules('header_color','header color','required');
-			$this->form_validation->set_rules('sidebar_active_color','sidebar active color','required');
-			$this->form_validation->set_rules('admin_dropdown','admin dropdown color','required');
-			$this->form_validation->set_rules('sidebar_hover_color','sidebar hover color','required');
-			$this->form_validation->set_rules('btn_primary','primary button color','required');
-			$this->form_validation->set_rules('btn_default','default button color','required');
-			$this->form_validation->set_rules('btn_danger','delete button color','required');
-			$this->form_validation->set_rules('btn_success','Success button color','required');
-	        $this->form_validation->set_rules('modal_header','modal/popup header color','required');
-	        if($this->form_validation->run() === TRUE){
+	        if($this->form_validation->run('theme_settings') === TRUE){
 				$current_setting_data = $this->input->post();
 				if ( ! $this->update_css_file($current_setting_data)) {
 				    echo json_encode(array('status' => 'error', 'message' => $this->lang->line('error_message_something_went_wrong')));
@@ -37,8 +27,8 @@ class Theme_settings extends CI_Controller{
 				echo json_encode(array('status' => 'error', 'message' => validation_errors()));
 			}
 		} else {
-			$current_settings = $this->crud->readData('option_name, option_value', 'options', array('option_id'=> 22))->result();
-			$data['current_settings'] = json_decode($current_settings[0]->option_value);
+			$current_settings = $this->crud->readData('option_name, option_value', 'options', array('option_id'=> 22))->row_array();
+			$data['current_settings'] = json_decode($current_settings['option_value']);
 			$data['title'] = $this->lang->line('title_message_theme_settings');
 			$data['template'] = 'backend/theme_settings/index';
 			$this->load->view('template/backend/superadmin_template',$data);
@@ -46,12 +36,12 @@ class Theme_settings extends CI_Controller{
 	} 
 	/*Reset default theme settings*/
 	public function default(){ 
-		$default_settings = $this->crud->readData('option_name, option_value', 'options', array('option_id'=> 23))->result();//Default theme setting option_id = 23
+		$default_settings = $this->crud->readData('option_name, option_value', 'options', array('option_id'=> 23))->row_array();//Default theme setting option_id = 23 
 		if(!empty($default_settings)) {
-			$update_data['option_value'] = $default_settings[0]->option_value;
+			$update_data['option_value'] = $default_settings['option_value'];
 			// Set current theme as a default settings option_id = 22 current theme settings.
 			if($this->crud->updateData('options', $update_data, array('option_id' => 22))) {
-				$this->update_css_file(json_decode($default_settings[0]->option_value, TRUE));
+				$this->update_css_file(json_decode($default_settings['option_value'], TRUE));
 				echo json_encode(array('status' => 'success', 'message' => $this->lang->line('success_message_theme_setting_reset_default')));
 			} else {
 				echo json_encode(array('status' => 'error', 'message' => $this->lang->line('error_message_something_went_wrong')));

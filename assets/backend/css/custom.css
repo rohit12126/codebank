@@ -5,7 +5,7 @@
     position: relative;
     /*max-width: 400px;
     min-width: 350px;*/
-    width: 350px;
+    width: 400px;
 
 }
 .custom-alert-msg-wrap .close-btn {
@@ -14,8 +14,8 @@
     top: 0px;
     color: #fff;
     opacity: 1;
-    right: 3px !important;
-    top: -4px !important;
+    right: 5px !important;
+    top: -2px !important;
 }
 .custom-alert-msg-wrap .alert-icon {
     width: 30px;

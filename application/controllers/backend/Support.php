@@ -123,9 +123,6 @@ class Support extends CI_Controller {
 				'3' => '',
 				'4' => '',
 				'5' => '',
-				/*'6' => '',
-				'7' => '',*/
-				
 			);
 			array_push($result, $arr);
 		}
@@ -178,9 +175,7 @@ class Support extends CI_Controller {
     }
     // Reply to user by admin for open ticket.
     public function reply() {
-		$this->form_validation->set_rules('support_id','Support id','required');
-        $this->form_validation->set_rules('reply','Comment','trim|required');
-        if($this->form_validation->run() === TRUE){
+        if($this->form_validation->run('support_reply') === TRUE){
         	$support_id = $this->input->post('support_id');
         	$support = $this->crud->readData('support.*, ', 'support', array('support_id' => $support_id, 'status'=>1),array())->row();
         	if(empty($support)){

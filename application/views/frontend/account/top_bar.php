@@ -30,10 +30,10 @@ $segment3 = $this->uri->segment(3);
                         <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?><?=$this->lang->line('dropdown_title_my_tickets')?>
                         </a><hr>
                         <a class="dropdown-item <?php if($segment1 == 'paypal') echo "active"; ?>" href="<?= base_url('paypal'); ?>">
-                        <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?>Paypal
+                        <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?><?=$this->lang->line('dropdown_title_paypal')?>
                         </a><hr>
                         <a class="dropdown-item <?php if($segment1 == 'stripe') echo "active"; ?>" href="<?= base_url('stripe'); ?>">
-                        <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?>Stripe
+                        <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?><?=$this->lang->line('dropdown_title_stripe')?>
                         </a><hr>
                         <a class="dropdown-item" href="<?= base_url('account/dashboard/logout'); ?>">
                         <?= file_get_contents_curl("assets/frontend/img/logout-black-drop.svg"); ?><?=$this->lang->line('')?>

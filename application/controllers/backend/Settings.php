@@ -12,25 +12,23 @@ class Settings extends CI_Controller{
         $options_data = $this->User_model->get_result('options', array('status' => 1));
         if($this->input->post()) {
             foreach ($options_data as $row) {
-                if($row->option_id != 2 && $row->option_id != 20 && $row->option_id != 21) {
+                if($row->option_id != 2 && $row->option_id != 20 && $row->option_id != 21 && $row->option_id != 22 && $row->option_id != 23) {
                     $this->form_validation->set_rules("".$row->option_name."","".$row->option_name."",'trim|required');
                     $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
                 }
             }
             if ($this->form_validation->run() == TRUE) {
                 foreach ($options_data as $row){
-                    $post_data = array('option_value' => trim($_POST[$row->option_name]));
-                    $this->User_model->update('options', $post_data,array('option_name' => $row->option_name));
-                    if($row->option_id == 33){
-                        $this->User_model->update('category', array('commision' => $_POST[$row->option_name]));
-                    }
+                    if($row->option_id != 22 && $row->option_id != 23) {
+                        $post_data = array('option_value' => trim($_POST[$row->option_name]));
+                        $this->User_model->update('options', $post_data,array('option_name' => $row->option_name));
+                    } 
                 }
                 echo json_encode(array('status' => 'success', 'message' => $this->lang->line('success_message_setting_update'))); die;
             } else {
                 echo json_encode(array('status' => 'error', 'message' => validation_errors())); die;
             }
         }
-
         $data['title'] =  $this->lang->line('title_message_settings');
         $data['options'] =  $options_data;
         $data['template'] = 'backend/settings';

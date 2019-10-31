@@ -25,7 +25,7 @@ $("body").on('submit', '#themeSettingForm', function( event ) {
             success: function (output) {
                 toasterMessage(output.status, output.message);
                 if(output.status == 'success') {
-                    setTimeout(function(){ location.reload(); }, 1000);
+                    setTimeout(function(){ location.reload(true); }, 1000);
                 }
             },
             error: function (error) {
@@ -62,7 +62,7 @@ function resetDefault() {
                 success: function (output) {
                     toasterMessage(output.status, output.message);
                     if(output.status == 'success') {
-                        setTimeout(function(){ location.reload(); }, 1000);
+                        setTimeout(function(){ location.reload(true); }, 1000);
                     }
                 },
                 error: function (error) {

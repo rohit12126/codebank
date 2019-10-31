@@ -76,14 +76,16 @@ class Pages extends CI_Controller {
 	}
 	// Edit particular page template
 	public function edit() {
-		$this->form_validation->set_rules('page_id','Page ID','required');
-        $this->form_validation->set_rules('title','Page Title','trim|required|max_length[50]');
-		$this->form_validation->set_rules('description','Page Body','required');
-       
-        if($this->form_validation->run() === TRUE){
-        	$data = $this->input->post();
-        	$page_id = $data['page_id'];
-        	$data['updated_at'] = date('Y-m-d H:i:s');
+        if($this->form_validation->run('page_template_edit') === TRUE){
+        	$page_id = $this->input->post('page_id');
+        	$data = [
+        			'title' => $this->input->post('title'),
+        			'meta_description' => $this->input->post('meta_description'),
+        			'meta_content' => $this->input->post('meta_content'),
+        			'meta_keyword' => $this->input->post('meta_keyword'),
+        			'description' => $this->input->post('description'),
+        			'updated_at' => date('Y-m-d H:i:s')
+        		];
         	if($this->crud->updateData('pages', $data, array('page_id' => $page_id))) {
 	        	echo json_encode(array('status' => 'success', 'message' => $this->lang->line('success_message_page_template')));        		
         	}

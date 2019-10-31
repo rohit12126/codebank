@@ -22,9 +22,7 @@ class Superadmin extends CI_Controller {
         $data['title'] = $this->lang->line('title_message_admin_login');
         $data['error_mail_msg'] = '';
         $data['error_pass_msg'] = '';
-        $this->form_validation->set_rules('password','Password','trim|required');
-        $this->form_validation->set_rules('email','Email','required|valid_email');
-        if($this->form_validation->run() === TRUE){
+        if($this->form_validation->run('admin_login') === TRUE){
         	$email = $this->input->post('email');
         	$password = $this->input->post('password');
             $check = $this->crud->readData('*', 'users', array('email' => $email, 'user_role' => 1))->row_array();
@@ -83,12 +81,7 @@ class Superadmin extends CI_Controller {
         $this->_check_login();
         $data['title']= $this->lang->line('title_message_account_details');
         if($this->input->post()) {
-            // header('Content-Type: application/json');
-            $this->form_validation->set_rules('first_name', 'First Name', 'required|max_length[20]');
-            $this->form_validation->set_rules('last_name', 'Last Name', 'max_length[20]');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-            if ($this->form_validation->run() == TRUE)  {
+            if ($this->form_validation->run('admin_profile') == TRUE)  {
                 $name = $this->input->post('first_name');
                 $email = $this->input->post('email');
                 $last_name = $this->input->post('last_name');
@@ -135,11 +128,7 @@ class Superadmin extends CI_Controller {
         $user_id = superadmin_id();
         $data['title']= $this->lang->line('title_message_change_password');
         if($this->input->post()) {
-            $this->form_validation->set_rules('oldpassword', 'Old Password', 'trim|required');
-            $this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|matches[confpassword]');
-            $this->form_validation->set_rules('confpassword','Confirm Password', 'trim|required');
-            $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-            if ($this->form_validation->run() == TRUE){
+            if ($this->form_validation->run('admin_change_password') == TRUE){
                 $old_password = $this->input->post('oldpassword');
                 $password = $this->input->post('newpassword');
                 $password = $this->encryption->encrypt($password);

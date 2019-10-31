@@ -19,8 +19,11 @@
                                 <div class="basic-info-content">
                                     <div class="basic-info-form">
                                         <div class="form-group">
-                                            <a class="btn" href="<?= base_url('paypal/subscribe/'); ?>">Pay</a>
+                                            <a class="btn" href="<?= base_url('paypal/subscribe/'); ?>">Recurring Pay</a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a class="btn" href="<?= base_url('paypal_payment'); ?>">One time Payment</a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

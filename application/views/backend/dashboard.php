@@ -124,62 +124,18 @@ foreach ($users as $row) {
         </div>
     </div>
 </section>
+<!-- custom css for dashboard page -->
+<link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/dashboard/dashboard.css"/>
+<!--  End -->
 <script>
-window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        axisY: {
-            title: "Number of Users",
-        },
-        /*axisX: {
-            title: "User registered in",
-        },*/
-        data: [{
-            type: "splineArea",
-            color: "rgba(197, 159, 209,.7)",
-            yValueFormatString: "########## Users",
-            dataPoints: <?= json_encode($graph, JSON_NUMERIC_CHECK); ?>
-        }]
-    });
-    <?php
-    if($graph) {
-        ?>
-        chart.render();
-        <?php
-    }
-    ?>
-    var chart1 = new CanvasJS.Chart("chartContainer1", {
-        animationEnabled: true,
-        axisY: {
-            title: "Marks"
-        },
-        axisX: {
-            title: "Subjects"
-        },
-        legend: {
-            cursor:"pointer",
-        },
-        toolTip: {
-            shared: true,
-        },
-        data: [{
-            type: "doughnut",
-            showInLegend: true,
-            name: "Users",
-            color: "#c59fd1",
-            yValueFormatString: "########## Users",
-            dataPoints: [
-                { y: <?= $adminUser; ?>, name: "Users", color: "#c59fd1" },
-                { y: <?= $systemUser; ?>, name: "Users", color: "#250330" }
-            ]
-        }]
-    });
-    chart1.render();
-}
+/* Variables for chart data*/
+var _dataPoints =  <?= json_encode($graph, JSON_NUMERIC_CHECK) ?>;
+var _adminCreatedUser = <?= $adminUser; ?>;
+var _systemUser = <?= $systemUser; ?>;
 </script>
+<!-- custom js for dashboard -->
+<script src="<?php echo BACKEND_THEME_URL;?>js/dashboard/dashboard.js"></script>
+<!-- end -->
+<!-- canvas chart js -->
 <script src="<?= base_url("assets/frontend/js/canvasjs.min.js"); ?>"></script>
-<style type="text/css">
-    .canvasjs-chart-credit{
-        display: none;
-    }
-</style>
+<!-- end -->

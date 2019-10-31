@@ -32,7 +32,7 @@ $(document).ready(function() {
         "createdRow": function( row, data, dataIndex ) {
             if(data[1] == 'error') {
                 $(row).attr('class', 'text-center');
-                $('td:eq(0)', row).attr('colspan', '4');
+                $('td:eq(0)', row).attr('colspan', '5');
                 $('td:eq(1)', row).css('display', 'none');
                 $('td:eq(2)', row).css('display', 'none');
                 $('td:eq(3)', row).css('display', 'none');

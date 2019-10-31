@@ -60,23 +60,9 @@
         </div>
     </div>
 </section>
+<!-- custom css for settings page -->
+<link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/settings/settings.css" />
+<!--  End -->
 <!-- User js -->
 <script src="<?php echo BACKEND_THEME_URL;?>js/settings/settings.js"></script>
 <!-- End User js -->
-<style type="text/css">
-    table td img{
-        max-height: 100px;
-        max-width: 100px;
-    }
-    span.grade-time-show2.pull-right {
-        padding-left: 20px;
-    }
-    .error {
-        color: red;
-    }
-    .control-label .error {
-        font-size: 14px;
-        margin: 0px;
-        font-weight: bold;
-    }
-</style>

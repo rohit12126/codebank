@@ -28,7 +28,7 @@
                     <th>#</th>
                     <th><?= $this->lang->line('table_heading_title')?></th>
                     <th><?= $this->lang->line('table_heading_subject')?></th>
-                    <th>Layout<?= ''//$this->lang->line('table_heading_subject')?></th>
+                    <th>Layout<?= $this->lang->line('table_heading_layout')?></th>
                     <th><?= $this->lang->line('table_heading_action')?></th>
                 </tr>
             </thead>
@@ -108,6 +108,6 @@
     </div>
 </div>
 <!-- custom css for email template -->
-<link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/page_template/page_template.css" />
+<link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>css/email_template/email_template.css" />
 <!--  End -->
 <script src="<?php echo BACKEND_THEME_URL;?>js/email_template/email_template.js"></script>

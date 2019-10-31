@@ -1,4 +1,7 @@
 <?php
+/**
+** This is for theme settings and all theme settings text put in this file.
+**/
 $lang['title_message_theme_settings'] = 'Theme Settings';
 $lang['heading_theme_settings'] = 'Theme Settings';
 $lang['error_theme_setting_sidebar'] = 'Sidebar color is required.';
@@ -28,3 +31,13 @@ $lang['error_theme_btn_success'] ='Success button Color is required';
 $lang['label_btn_success_color'] = 'Success Button';
 $lang['error_theme_modal_header'] ='Modal/Popup header Color is required';
 $lang['label_modal_header_color'] = 'Modal/Popup Header';
+$lang['error_sidebar_color_required'] = 'Sidebar color is required.';
+$lang['error_header_color_required'] = 'Header color is required.';
+$lang['error_sidebar_active_color_required'] = 'Sidebar active color is required.';
+$lang['error_admin_dropdown_required'] = 'Admin Dropdown color is required.';
+$lang['error_sidebar_hover_color_required'] = 'Sidebar hover color is required.';
+$lang['error_btn_primary_required'] = 'Primary button color is required.';
+$lang['error_btn_default_required'] = 'Default button color is required.';
+$lang['error_btn_danger_required'] = 'Danger button color is required.';
+$lang['error_btn_success_required'] = 'Success button color is required.';
+$lang['error_modal_header_required'] = 'Popup header color is required. ';
