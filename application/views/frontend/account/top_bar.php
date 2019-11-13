@@ -35,6 +35,12 @@ $segment3 = $this->uri->segment(3);
                         <a class="dropdown-item <?php if($segment1 == 'stripe') echo "active"; ?>" href="<?= base_url('stripe'); ?>">
                         <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?><?=$this->lang->line('dropdown_title_stripe')?>
                         </a><hr>
+                        <a class="dropdown-item <?php if($segment2 == 'contact_us') echo "active"; ?>" href="<?= base_url('pages/contact_us'); ?>">
+                        <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?><?='Contact us'?>
+                        </a><hr>
+                        <a class="dropdown-item <?php if($segment2 == 'upload_documents') echo "active"; ?>" href="<?= base_url('pages/upload_documents'); ?>">
+                        <?= file_get_contents_curl("assets/frontend/img/book.svg"); ?><?='Image Upload'?>
+                        </a><hr>
                         <a class="dropdown-item" href="<?= base_url('account/dashboard/logout'); ?>">
                         <?= file_get_contents_curl("assets/frontend/img/logout-black-drop.svg"); ?><?=$this->lang->line('')?>
                             Log out

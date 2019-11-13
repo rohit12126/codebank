@@ -38,20 +38,20 @@
 </section>
 <!-- Edit Template Modal -->
 <div id="editPageModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" aria-modal="true">
-    <div class="modal-dialog modal-block modal-block-lg">
+    <div class="modal-dialog modal-block modal-block-full">
         <!-- Modal content-->
         <div class="modal-content">
             <header class="card-header">
                 <h2 class="card-title"><?=$this->lang->line('heading_page_content_edit')?></h2>
                 <div class="card-actions">
-                     <a href="#" class="card-action card-action-dismiss fa fa-times" data-dismiss="modal"></a>
+                     <a href="#" class="card-action card-action-dismiss fas fa-times" data-dismiss="modal"></a>
                 </div>
             </header>
             <form method="POST" class="mb-0" action="<?= base_url('backend/pages/edit'); ?>" data-parsley-validate>
                 <div class="card-body">
                     <div class="col-sm-6">
                         <div class=" form-group">                
-                            <input type="hidden" name="page_id">
+                            <input type="hidden" id="page_id" name="page_id">
                             <label for="inputPassword4"><?=$this->lang->line('label_page_title')?><small class="required">*</small></label>
                             <input type="text" class="form-control" placeholder="<?=$this->lang->line('placeholder_page_template_title')?>" name="title" required="" data-parsley-required-message="<?=$this->lang->line('error_page_title_required')?>" maxlength="50">
                         </div>
@@ -76,12 +76,22 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 dn">
                         <div class=" form-group">
                             <label for="inputPassword4"><?=$this->lang->line('label_page_body')?><small class="required">*</small></label>
                             <textarea type="text" class="form-control tinymce_edittor" placeholder="<?=$this->lang->line('placeholder_page_body')?>" name="description"></textarea>
                         </div>
                     </div>
+                    <div class="clearfix">&nbsp;</div>
+
+                    <div class="col-sm-12">
+                        <div class=" form-group">
+                            <div id="gjs"style="height:0px; overflow:hidden">
+                            </div>
+                        </div>
+                        <div id="blocks"></div>
+                    </div>
+
                 </div>
                 <footer class="card-footer">
                     <div class="row">
@@ -97,13 +107,13 @@
 </div>
 <!-- View Template Modal -->
 <div id="viewTemplateModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" aria-modal="true">
-    <div class="modal-dialog modal-block modal-block-lg">
+    <div class="modal-dialog modal-block modal-block-full">
         <!-- Modal content-->
         <div class="modal-content">
             <header class="card-header">
                 <h2 class="card-title"><?=$this->lang->line('heading_page_preview')?></h2>
                 <div class="card-actions">
-                     <a href="#" class="card-action card-action-dismiss fa fa-times" data-dismiss="modal"></a>
+                     <a href="#" class="card-action card-action-dismiss fas fa-times" data-dismiss="modal"></a>
                 </div>
             </header>
             <div class="card-body">
@@ -124,3 +134,16 @@
 <!-- Support page js -->
 <script src="<?php echo BACKEND_THEME_URL;?>js/page/page_template.js"></script>
 <!--End Support page js -->
+
+<!-- Editor js -->
+<link rel="stylesheet" href="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/css/grapes.min.css">
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapes.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-blocks-basic.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-tabs.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-lory-slider.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-blocks-flexbox.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-plugin-forms.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-tui-image-editor.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-custom-code.min.js"></script>
+<script src="<?php echo BACKEND_THEME_URL;?>plugin/grapesjs/dist/grapesjs-touch.min.js"></script>
+<!-- end editor js -->

@@ -117,14 +117,14 @@ $config = array(
                 'max_length'  => $CI->lang->line('error_message_page_title_max_length'),
             ),
 		),
-		array(
+		/*array(
 			'field' => 'description',
 			'label' => 'Page Body',
 			'rules' => 'required',
 			'errors'=> array(
                 'required'    => $CI->lang->line('error_message_page_body'),
             )
-		)
+		)*/
 	),
 
 	'faq_edit' => array(

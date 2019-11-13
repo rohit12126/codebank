@@ -107,3 +107,5 @@ define('NO_REPLY_EMAIL_FROM_NAME','Code Bank'); // highest
 define('QUESTION_TIME_DURATION', 72); // In second
 define('BACKEND_NO_DATA_AVAILABLE', 'assets/backend/img/no-data-available.png');
 define('AJAX_ERROR_MESSAGE', 'Something went wrong, Please try again later.');
+define('IMAGE_RESIZE', FALSE); //Default FALSE and for IMAGE RESIZE method TRUE.
+define('IMAGE_THUMBNAIL', FALSE); //Default FALSE and for IMAGE RESIZE method TRUE.

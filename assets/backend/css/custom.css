@@ -561,7 +561,7 @@ ul.nav-main li .nav-children {
     -webkit-box-shadow: 0px -3px 3px -3px rgba(197, 159, 209, 0.7) inset;
     box-shadow: 0px -3px 3px -3px rgba(197, 159, 209, 0.7) inset;
     display: none;
-    padding: 10px 0;
+    padding: 1px 0;
 } 
 ul.nav-main li .nav-children a{
     padding: 15px 20px;

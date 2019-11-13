@@ -69,6 +69,8 @@ function resetFilter() {
 
 $("body").on('click', '.edit-row', function () {
     var page_id = $(this).data('id');
+    $('.loader-wrap').removeClass('dn');
+        load_template(page_id);
     $.ajax({
         type: "post",
         data: "page_id="+page_id,
@@ -80,15 +82,16 @@ $("body").on('click', '.edit-row', function () {
             $("#editPageModal input[name=meta_description]").val(result.meta_description);
             $("#editPageModal input[name=meta_content]").val(result.meta_content);
             $("#editPageModal input[name=meta_keyword]").val(result.meta_keyword);
-            tinyMCE.activeEditor.setContent(result.description);
+            //inyMCE.activeEditor.setContent(result.description);
             $("#editPageModal").modal('show');
+            $('.loader-wrap').addClass('dn');
         }
     });
 });
 $( "#editPageModal form" ).submit(function( event ) {
     if($(this).parsley().isValid()){
         var POSTURL = $(this).attr('action');
-        $("#editPageModal textarea[name=description]").val(tinyMCE.activeEditor.getContent());
+        //$("#editPageModal textarea[name=description]").val(tinyMCE.activeEditor.getContent());
         $.ajax({
             type: 'POST',
             url: POSTURL,
@@ -126,9 +129,72 @@ $("body").on('click', '.view-row', function () {
         url: SITE_URL+"backend/pages/view",
         success: function(result){
             $("#viewTemplateModal .card-title").html("Preview ("+result.title+")");
-            $("#viewTemplateModal .card-body").html(result.description);
+            //$("#viewTemplateModal .card-body").html(result.description);
+            $("#viewTemplateModal .card-body").html('<style>'+result.css+'</style>'+result.html);
             // $("#viewTemplateModal .card-body table").css('width', '100%');
             $("#viewTemplateModal").modal('show');
         }
     });
 });
+
+const LandingPage = {
+    html: `<div>...</div>`,
+    css: null,
+    components: null,
+    style: null,
+};
+
+function load_template(pageId) {
+    var editor = grapesjs.init({
+    components: LandingPage.components || LandingPage.html,
+    style: LandingPage.style || LandingPage.css,
+    noticeOnUnload: 0,
+    storageManager: {
+        type: 'remote',
+        stepsBeforeSave: 1,
+        urlStore: SITE_URL+'backend/pages/store_template/'+pageId,
+        urlLoad: SITE_URL+'backend/pages/load_template/'+pageId,
+        autosave: true,
+        autoload: true, 
+        contentTypeJson: true,
+    },
+    container : '#gjs',
+    fromElement: true,
+    plugins: [
+                'gjs-blocks-basic', 
+                'grapesjs-lory-slider', 
+                'grapesjs-custom-code',
+                'grapesjs-tabs',
+                'gjs-blocks-flexbox',
+                'grapesjs-plugin-forms',
+                'grapesjs-tui-image-editor',
+                'grapesjs-touch'
+            ],
+    pluginsOpts: {
+        'gjs-blocks-basic': {},
+        'grapesjs-lory-slider': {},
+        'grapesjs-custom-code': {},
+        'grapesjs-tabs': {},
+        'gjs-blocks-flexbox': {},
+        'grapesjs-tui-image-editor': {}
+    }
+  });
+    /*
+    //Start Code for save btn
+    editor.Panels.addButton('options',
+        [{
+            id: 'save-db',
+            className: 'fa fa-floppy-o',
+            command: 'save-db',
+            attributes: {title: 'Save template'}
+        }]
+    );
+    //End Code for save btn
+
+    // Add the command
+    editor.Commands.add('save-db', { run: function(editor, sender) {
+          sender && sender.set('active', 0); // turn off the button
+          editor.store();
+        }
+    });*/  
+}

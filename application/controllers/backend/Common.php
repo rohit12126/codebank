@@ -4,7 +4,7 @@ class Common extends CI_Controller{
 	public function __construct() {
 		parent::__construct();
 		if(superadmin_logged_in()===FALSE)
-			redirect('behindthescreen');
+		redirect('behindthescreen');
 	}
 
 	public function get_data(){

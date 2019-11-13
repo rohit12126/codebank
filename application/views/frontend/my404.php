@@ -3,7 +3,7 @@ if($show_header) {
 ?>
     <div class="home-topbar">
         <div class="brand-logo">
-            <a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/frontend/img/logo.png') ?>"></a>
+            <a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/frontend/img/chapter-logo-1.png') ?>"></a>
         </div>    
         <div class="auth-btn-wrap">
             <a href="<?= base_url(); ?>" class="btn white-btn mr-2"><span><?=$this->lang->line('heading_404_go_to_website')?></span> <i class="fa fa-link"></i></a>

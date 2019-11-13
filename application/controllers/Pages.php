@@ -174,4 +174,61 @@ class Pages extends CI_Controller {
         $data['template'] = 'frontend/contact/contact_form';
         $this->load->view('template/frontend/template',$data);
     }
+
+    public function show_template() {
+        //32,3,27,8,29
+        $template_data = $this->crud->readData('page_template, title', 'pages', array('page_id'=>27))->row_array();
+        if(empty($template_data) || empty($template_data['page_template'])) {
+            redirect('pages/my404');
+        }
+        $data_array = json_decode($template_data['page_template'], TRUE);
+        $data['template_css'] = $data_array['gjs-css'];
+        $data['template_html'] = $data_array['gjs-html'];
+        $data['title'] = ucwords($template_data['title']);
+        $data['topbar'] = $this->load->view('frontend/account/top_bar', '', true);
+        $data['template'] = 'frontend/pages/index';
+        $this->load->view('template/frontend/template',$data);
+    }
+
+    public function upload_documents() {
+        if(isset($_FILES['file'])&&$_FILES['file']['tmp_name']) {
+            $path = "assets/backend/uploads/main/";
+            $image   = $_FILES['file'];
+            /*$_FILES['image']['name'] = $image['name'];
+            $_FILES['image']['type'] = $image['type'];
+            $_FILES['image']['tmp_name'] = $image['tmp_name'];
+            $_FILES['image']['error'] = $image['error'];
+            $_FILES['image']['size'] = $image['size'];*/
+            $image_resize = $this->input->post('resize');
+            $thumb = $this->input->post('thumbnail');
+            $FName = upload_file('file', $path, 'gif|jpg|jpeg|png');
+            if(is_array($FName)) {
+                echo json_encode(array('status' => 'error', 'message' => $FName['error']));
+                exit;
+            } else {
+                if (!empty($FName)) {
+                    if($image['type'] = 'image/jpeg' || $image['type'] = 'image/gif' || $image['type'] = 'image/png' ) {
+                        if($image_resize) {
+                            $upload_dir = "assets/backend/uploads/resize/";
+                            //resize image or compress
+                            resize_image($path, $upload_dir, $FName);
+                        }
+
+                        if($thumb) {
+                            //create thumbnails
+                            create_thumb($path.$FName, 'assets/backend/uploads/thumb/'.'254x254_'.$FName, 254,254);
+                        }
+                    }
+                    echo json_encode(array('status' => 'success', 'message' => 'File has been uploaded successfully.'));
+                        exit;
+                } else {
+                    echo json_encode(array('status' => 'error', 'message' => 'Something went wrong, Please try later.'));
+                    exit;
+                } 
+            } 
+        }
+        $data['topbar'] = $this->load->view('frontend/account/top_bar', '', true);
+        $data['template'] = 'frontend/document/index';
+        $this->load->view('template/frontend/template',$data);
+    }
 }

@@ -83,7 +83,7 @@ class Pages extends CI_Controller {
         			'meta_description' => $this->input->post('meta_description'),
         			'meta_content' => $this->input->post('meta_content'),
         			'meta_keyword' => $this->input->post('meta_keyword'),
-        			'description' => $this->input->post('description'),
+        			/*'description' => $this->input->post('description'),*/
         			'updated_at' => date('Y-m-d H:i:s')
         		];
         	if($this->crud->updateData('pages', $data, array('page_id' => $page_id))) {
@@ -100,8 +100,14 @@ class Pages extends CI_Controller {
 	// View page template
 	public function view() {
 		$page_id = $this->input->post('page_id');
-		$data = $this->crud->readData('title, description', 'pages', array('page_id' => $page_id))->row_array();
-		echo json_encode($data);
+		$data = $this->crud->readData('title, description, page_template', 'pages', array('page_id' => $page_id))->row_array();
+		//echo json_encode($data);
+		$template = json_decode($data['page_template'], TRUE);
+		$template_data['title'] = $data['title'];
+		$template_data['html'] = $template['gjs-html'];
+		$template_data['css'] = $template['gjs-css'];
+		echo json_encode($template_data);
+
 	}
 	// Show 404 page 
 	public function my404() {
@@ -122,4 +128,20 @@ class Pages extends CI_Controller {
             $this->load->view('template/frontend/template',$data);
         }
     }
+    /*save template */
+    public function store_template($id = '') {
+		header('Content-Type: application/json');
+		$data_json = @file_get_contents("php://input");
+		$data['page_template'] = $data_json;
+		$this->crud->updateData('pages', $data, array('page_id'=> $id));
+	}
+	/*Load page template on editor*/
+	public function load_template($id = '') {
+		$data = $this->crud->readData('*', 'pages', array('page_id'=> $id))->row_array();
+		if(!empty($data) && !empty($data['page_template'])) {
+			$data_array = json_decode($data['page_template']);
+			header('Content-Type: application/json');
+			echo json_encode($data_array);
+		}
+	}
 }

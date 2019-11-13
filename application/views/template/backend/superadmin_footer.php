@@ -50,23 +50,17 @@
 		        $('[data-toggle="tooltip"], .tooltip').tooltip("hide");
 		        // alert("I want this to appear after the modal has opened!");
 		    });
-		    /*function open_notifications() {
-		    	$.get( SITE_URL+"backend/superadmin/open_notifications", function( data ) {
-				  	$(".notification-count b").text(data);
-				  	$("#notifCount .sidebar-notification-count b").text(data);
-				});
-		    }
-		    setInterval(function(){ open_notifications(); }, 15000);
-		    open_notifications();*/
+
 		</script>
 	    <script src="<?php echo BACKEND_THEME_URL;?>vendor/popper/umd/popper.min.js"></script>	 
-	    <script src="<?php echo BACKEND_THEME_URL;?>vendor/font-awesome-5/js/all.min.js"></script>	 
+	    <!-- <script src="<?php echo BACKEND_THEME_URL;?>vendor/font-awesome-5/js/all.min.js"></script>	 --> 
 	    <script src="<?php echo BACKEND_THEME_URL;?>vendor/font-awesome-5/js/fontawesome.min.js"></script>	 
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="<?php echo BACKEND_THEME_URL;?>vendor/bootstrap/js/bootstrap.js"></script>	
 		<script src="<?php echo BACKEND_THEME_URL;?>plugin/select2/select2.js"></script>
 		<script src="<?php echo BACKEND_THEME_URL;?>/js/theme.js"></script>
 		<script>
+			
 		  	$( function() {
 		    	$( ".datepicker" ).datepicker({
 		    		changeMonth: true,

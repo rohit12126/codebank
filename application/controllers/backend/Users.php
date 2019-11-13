@@ -522,10 +522,10 @@ class Users extends CI_Controller{
             $inserts = array();
             foreach ($data['name'] as $key => $name) {
                 $insert = array(
-                    'name'                      => $name,
-                    'email'                     => $data['email'][$key],
-                    'contact'                   => $data['contact'][$key],
-                    'status'                    => 1,
+                    'name'   => $name,
+                    'email'  => $data['email'][$key],
+                    'contact'=> $data['contact'][$key],
+                    'status' => 1,
                 );
                 $insert = my_htmlentities($insert);
                 $inserts[] = $insert;

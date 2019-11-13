@@ -613,3 +613,225 @@ if ( ! function_exists('email_template_layout')) {
         }
     }
 }
+
+/**
+* Create Thumbnails
+*/
+//create_thumb($dir.'check/'.$name, './assets/uploads/thumbnail/'.$nameThumb, 100,100);
+if(!function_exists('create_thumb')){
+    function create_thumb($path, $target_path, $new_w = 254, $new_h = 254){
+        /* read the source image */
+        $source_image = FALSE;
+        $sourcePathinfo   = getimagesize($path);
+        $mime = isset($sourcePathinfo['mime']) ? $sourcePathinfo['mime'] : '';
+        switch(strtolower($mime)) {
+            case 'image/gif':
+                $source_image = imagecreatefromgif($path);
+                break;
+            case 'image/png':
+                $source_image = imagecreatefrompng($path);
+                break;
+            case 'image/jpeg':
+                $source_image = imagecreatefromjpeg($path);
+                break;
+        }
+        $thumb_width  = $new_w;
+        $thumb_height = $new_h;
+
+        $width  = imagesx($source_image);
+        $height = imagesy($source_image);
+
+        $original_aspect = $width / $height;
+        $thumb_aspect = $thumb_width / $thumb_height;
+
+        if ( $original_aspect >= $thumb_aspect ) {
+           // If image is wider than thumbnail (in aspect ratio sense)
+           $new_height = $thumb_height;
+           $new_width = $width / ($height / $thumb_height);
+        } else {
+           // If the thumbnail is wider than the image
+           $new_width = $thumb_width;
+           $new_height = $height / ($width / $thumb_width);
+        }
+        $thumb = imagecreatetruecolor( $thumb_width, $thumb_height );
+        // Resize and crop
+        imagecopyresampled($thumb,$source_image, 0 - ($new_width - $thumb_width) / 2,  0 - ($new_height - $thumb_height) / 2, 0, 0,$new_width, $new_height,$width, $height);
+        switch(strtolower($mime)) {
+            case 'image/gif':
+                if (@imagegif($thumb, $target_path)) {
+                    imagedestroy($thumb);
+                    imagedestroy($source_image);
+                }
+            break;
+            case 'image/png':
+                if (@imagepng($thumb, $target_path, 6)) {
+                    imagedestroy($thumb);
+                    imagedestroy($source_image);
+                }
+            break;
+            case 'image/jpeg':
+                if (@imagejpeg($thumb, $target_path, 90)) {
+                    imagedestroy($thumb);
+                    imagedestroy($source_image);
+                }
+            break;
+        }
+    }
+}
+
+/**
+*   For image compress/resize
+*/
+//resize_image($dir.'check/','./assets/uploads/', $name);
+if ( ! function_exists('resize_image')) {
+    function resize_image( $source, $target, $image_name, $width_new = 0, $height_new = 0) {
+
+        $sourcePath = $source . $image_name;
+        $targetPath = $target . $image_name;
+
+        $sourcePathinfo   = getimagesize($sourcePath);
+        list($w,$h,$type) = getimagesize($sourcePath);
+        
+        $file_size = filesize($sourcePath); 
+        $file_size = $file_size / 1024; 
+        
+        if( ($file_size < 50) && ($width_new == 0) && ($height_new == 0) ){
+            copy($sourcePath, $targetPath);
+            return true;
+        }
+
+            $mime = isset($sourcePathinfo['mime']) ? $sourcePathinfo['mime'] : '';
+            switch(strtolower(image_type_to_mime_type($type))) {
+                case 'image/gif':
+                    $originalImage = imagecreatefromgif($sourcePath);
+                    break;
+                case 'image/png':
+                    $originalImage = imagecreatefrompng($sourcePath);
+                    break;
+                case 'image/jpeg':
+                    $originalImage = imagecreatefromjpeg($sourcePath);
+                    break;
+                default:
+                    return false;
+                    break;
+            }
+
+            $width          =   $sourcePathinfo[0];
+            $height         =   $sourcePathinfo[1];
+            $set=0;
+            if( ($width_new == 0) && ($height_new == 0)){
+                if($width > 1600 || $height > 900){
+                    $width_new  = 1248;
+                    $height_new = 734;
+                }else{
+                    /*in case coping (without maintaing ratio)*/
+                    $thumbWidth    =   $width;
+                    $thumbHeight   =   $height;
+                    $set=1;
+                }
+            }
+            /*maintaing Ratio of Image */
+            if($set == 0){
+            //this code is for maintain near aspect ratio
+            if($width > $height) {
+                $ratio = $height / $width;
+                $height_new = $width_new * $ratio;
+                
+                $thumbWidth    =   $width_new;
+                $thumbHeight   =   $height_new;
+            }
+
+            if($width < $height) {
+                $ratio = $width / $height;
+                $width_new = $height_new * $ratio;
+                
+                $thumbWidth    =  $width_new;
+                $thumbHeight   =  $height_new;
+            }
+
+            if($width == $height) {
+              if ($height_new < $width_new) {
+                    
+                    $ratio = $height / $width;
+                    $height_new = $width_new * $ratio;
+                 
+                    $thumbWidth    =  $width_new;
+                    $thumbHeight   =  $height_new;
+                } else if ($newHeight > $newWidth) {
+
+                    $ratio = $width / $height;
+                    $width_new = $height_new * $ratio;
+                
+                    $thumbWidth    =  $width_new;
+                    $thumbHeight   =  $height_new;
+                } else {
+                    // *** Sqaure being resized to a square
+                $thumbWidth    =  $width_new;
+                $thumbHeight   =  $height_new;
+            }
+          }
+        }
+        /*maintaing Ratio of Image */
+        $thumbImage  =   ImageCreateTrueColor($thumbWidth,$thumbHeight);
+        if ($mime == 'image/png') {
+            if( ($width_new > 0) && ($height_new > 0)){
+                imagealphablending($thumbImage, false);
+                imagesavealpha($thumbImage, true);
+                $background = imagecolorallocatealpha($thumbImage, 255, 255, 255, 127);
+                imagecolortransparent($thumbImage, $background);
+            }
+        } else {
+            $background = imagecolorallocate($thumbImage, 255, 255, 255);
+        }
+        imagecopyresampled($thumbImage,$originalImage,0,0,0,0,$thumbWidth,$thumbHeight,$width,$height);
+        switch(strtolower(image_type_to_mime_type($type))) {
+            case 'image/gif':
+                    imagegif($thumbImage,$targetPath);
+            break;
+            case 'image/png':
+                    $quality = ($file_size > 200) ? 5 : 1;
+                    imagepng($thumbImage,$targetPath,$quality);
+            break;
+            case 'image/jpeg':
+                if( ($thumbWidth  > 254) || ($thumbHeight > 254) ){
+                        $quality = ($file_size > 200) ? 50 : 90;
+                }else{
+                        $quality = 100;
+                }
+                imagejpeg($thumbImage,$targetPath,$quality);
+            break;
+            default:
+            return false;
+            break;
+        }
+    }
+}
+/**
+* Upload file
+*/
+//upload_file('file', $upload_path, 'pdf|gif|jpg|jpeg|png');
+if ( ! function_exists('upload_file')) {
+    function upload_file($image = '', $folder = '', $type = 'pdf|gif|jpg|jpeg|png|txt|docx|doc', $name = true) {
+        $CI = & get_instance();
+        $CI->load->library('upload');
+        $new_name = date("YmdHis");
+        $dirPath = $folder;
+        $config['upload_path'] = $dirPath;
+        $config['allowed_types'] = $type;
+        $config['max_size']   = "1000000";
+        $config['max_width']  = '0';
+        $config['max_height'] = '0';
+        if($name) {
+            $config['file_name'] = $new_name;
+        }
+        $CI->upload->initialize($config);
+        if (!$CI->upload->do_upload($image)) {
+            $error = $CI->upload->display_errors();
+            return array('error' => $error);
+        }
+        $imageData = $CI->upload->data();
+        if (is_array($imageData)) {
+            return $imageData['file_name'];
+        }
+    }
+}
